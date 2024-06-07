@@ -18,7 +18,7 @@ internal fun Project.configureAndroidCompose(
 
         dependencies {
             add("implementation", libs.androidx.compose.foundation)
-            add("debugImplementation", libs.androidx.compose.ui.tooling)
+            add("implementation", libs.androidx.compose.ui.tooling.preview)
         }
     }
 }

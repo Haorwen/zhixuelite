@@ -170,7 +170,7 @@ internal fun OverviewPanel(
         )
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
             if (enabledPlaceholder) {
-                repeat(5) {
+                repeat(6) {
                     PaperInfoItem(
                         enabledPlaceholder = true,
                         modifier = Modifier.padding(horizontal = 8.dp)
