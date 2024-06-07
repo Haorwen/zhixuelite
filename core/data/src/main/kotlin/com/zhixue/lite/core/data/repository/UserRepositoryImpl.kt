@@ -68,7 +68,8 @@ internal class UserRepositoryImpl @Inject constructor(
         val casInfo = networkDataSource.casLogin(ssoInfo.accessTicket, ssoInfo.userId)
 
         val token = casInfo.token
-        val currentUserId = networkDataSource.getUserInfo(token).currentUserId
+        val currentUserId =
+            networkDataSource.getUserInfo(token).currentUserId ?: error("请确认是否已绑定学生账号")
 
         val (userInfo, classInfo) = when (casInfo.role) {
             "student" -> {
@@ -76,10 +77,9 @@ internal class UserRepositoryImpl @Inject constructor(
             }
 
             "parent" -> {
-                casInfo.children
-                    ?.find { it.id == currentUserId }
-                    ?.let { it.userInfo to it.classInfo }
-                    ?: error("请确认是否已绑定学生账号")
+                casInfo.children!!
+                    .single { it.id == currentUserId }
+                    .let { it.userInfo to it.classInfo }
             }
 
             else -> {

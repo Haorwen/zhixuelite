@@ -10,41 +10,41 @@ data class NetworkCasInfo(
     @SerialName("token")
     val token: String,
     @SerialName("childrens")
-    val children: List<NetworkChildrenInfo>? = null,
+    val children: List<ChildInfo>? = null,
     @SerialName("userInfo")
-    val userInfo: NetworkCasUserInfo,
+    val userInfo: UserInfo,
     @SerialName("clazzInfo")
-    val classInfo: NetworkClassInfo? = null,
-)
-
-@Serializable
-data class NetworkChildrenInfo(
-    @SerialName("id")
-    val id: String,
-    @SerialName("userInfo")
-    val userInfo: NetworkCasUserInfo,
-    @SerialName("clazzInfo")
-    val classInfo: NetworkClassInfo
-)
-
-@Serializable
-data class NetworkCasUserInfo(
-    @SerialName("avatar")
-    val avatar: String? = null,
-    @SerialName("name")
-    val name: String,
-    @SerialName("school")
-    val schoolInfo: SchoolInfo? = null
+    val classInfo: ClassInfo? = null,
 ) {
+    @Serializable
+    data class ChildInfo(
+        @SerialName("id")
+        val id: String,
+        @SerialName("userInfo")
+        val userInfo: UserInfo,
+        @SerialName("clazzInfo")
+        val classInfo: ClassInfo
+    )
+
+    @Serializable
+    data class UserInfo(
+        @SerialName("avatar")
+        val avatar: String? = null,
+        @SerialName("name")
+        val name: String,
+        @SerialName("school")
+        val schoolInfo: SchoolInfo? = null
+    )
+
     @Serializable
     data class SchoolInfo(
         @SerialName("schoolName")
         val name: String
     )
-}
 
-@Serializable
-data class NetworkClassInfo(
-    @SerialName("name")
-    val name: String
-)
+    @Serializable
+    data class ClassInfo(
+        @SerialName("name")
+        val name: String
+    )
+}
