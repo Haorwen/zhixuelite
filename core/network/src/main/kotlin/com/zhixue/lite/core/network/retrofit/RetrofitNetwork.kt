@@ -3,6 +3,7 @@ package com.zhixue.lite.core.network.retrofit
 import com.zhixue.lite.core.common.json.NetworkJson
 import com.zhixue.lite.core.network.NetworkDataSource
 import com.zhixue.lite.core.network.model.NetworkCasInfo
+import com.zhixue.lite.core.network.model.NetworkCheckSheet
 import com.zhixue.lite.core.network.model.NetworkPaperInfo
 import com.zhixue.lite.core.network.model.NetworkReportInfoPage
 import com.zhixue.lite.core.network.model.NetworkSsoInfo
@@ -74,6 +75,12 @@ internal class RetrofitNetwork @Inject constructor(
         reportId: String, paperId: String, token: String
     ): List<NetworkTrendInfo> {
         return zhixueApi.getLevelTrend(reportId, paperId, token).result!!.trendInfoList
+    }
+
+    override suspend fun getCheckSheet(
+        reportId: String, paperId: String, token: String
+    ): NetworkCheckSheet {
+        return zhixueApi.getCheckSheet(reportId, paperId, token).result!!
     }
 
     private inline fun <reified T> createNetworkApi(baseUrl: String): T {

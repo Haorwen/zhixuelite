@@ -1,6 +1,7 @@
 package com.zhixue.lite.core.network.retrofit.api
 
 import com.zhixue.lite.core.network.model.NetworkCasInfo
+import com.zhixue.lite.core.network.model.NetworkCheckSheet
 import com.zhixue.lite.core.network.model.NetworkLevelTrend
 import com.zhixue.lite.core.network.model.NetworkReportInfoPage
 import com.zhixue.lite.core.network.model.NetworkReportMain
@@ -78,4 +79,15 @@ internal interface ZhixueApi {
             "pageIndex" to "1"
         )
     ): ZhixueNetworkResponse<NetworkLevelTrend>
+
+    @FormUrlEncoded
+    @POST("zxbReport/report/paper/getCheckSheet")
+    suspend fun getCheckSheet(
+        @Field("examId")
+        reportId: String,
+        @Field("paperId")
+        paperId: String,
+        @Field("token")
+        token: String
+    ): ZhixueNetworkResponse<NetworkCheckSheet>
 }
