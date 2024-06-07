@@ -20,5 +20,6 @@ internal object DatabaseModule {
         context: Context
     ): ZhixueLiteDatabase = Room
         .databaseBuilder(context, ZhixueLiteDatabase::class.java, "zhixuelite-database")
+        .fallbackToDestructiveMigration()
         .build()
 }

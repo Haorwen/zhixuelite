@@ -4,6 +4,7 @@ import androidx.datastore.core.Serializer
 import com.zhixue.lite.core.common.json.PreferencesJson
 import com.zhixue.lite.core.datastore.model.UserPreferences
 import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import kotlinx.serialization.json.encodeToStream
@@ -20,7 +21,11 @@ internal class UserPreferencesSerializer @Inject constructor(
 
     @OptIn(ExperimentalSerializationApi::class)
     override suspend fun readFrom(input: InputStream): UserPreferences {
-        return preferencesJson.decodeFromStream(input)
+        return try {
+            preferencesJson.decodeFromStream(input)
+        } catch (e: SerializationException) {
+            defaultValue
+        }
     }
 
     @OptIn(ExperimentalSerializationApi::class)
