@@ -15,18 +15,18 @@ import kotlinx.serialization.json.jsonPrimitive
 @Serializable(ZhixueNetworkResponseSerializer::class)
 internal data class ZhixueNetworkResponse<T>(
     @SerialName("result")
-    val result: T?
+    val result: T
 )
 
 private class ZhixueNetworkResponseSerializer<T>(
     private val serializer: KSerializer<T>
-) : KSerializer<ZhixueNetworkResponse<T?>> {
+) : KSerializer<ZhixueNetworkResponse<T>> {
 
     override val descriptor: SerialDescriptor = serializer.descriptor
 
-    override fun serialize(encoder: Encoder, value: ZhixueNetworkResponse<T?>) {}
+    override fun serialize(encoder: Encoder, value: ZhixueNetworkResponse<T>) {}
 
-    override fun deserialize(decoder: Decoder): ZhixueNetworkResponse<T?> {
+    override fun deserialize(decoder: Decoder): ZhixueNetworkResponse<T> {
 
         check(decoder is JsonDecoder)
 

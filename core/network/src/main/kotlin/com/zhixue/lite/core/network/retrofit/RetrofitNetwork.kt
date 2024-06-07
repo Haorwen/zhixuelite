@@ -46,41 +46,41 @@ internal class RetrofitNetwork @Inject constructor(
     }
 
     override suspend fun casLogin(accessTicket: String, userId: String): NetworkCasInfo {
-        return zhixueApi.casLogin(accessTicket, userId).result!!
+        return zhixueApi.casLogin(accessTicket, userId).result
     }
 
     override suspend fun getUserInfo(token: String): NetworkUserInfo {
-        return zhixueApi.getUserInfo(token).result!!
+        return zhixueApi.getUserInfo(token).result
     }
 
     override suspend fun getReportInfoPage(
         reportType: String, page: Int, token: String
     ): NetworkReportInfoPage {
-        return zhixueApi.getReportInfoPage(reportType, page, token).result!!
+        return zhixueApi.getReportInfoPage(reportType, page, token).result
     }
 
     override suspend fun getSubjectDiagnosisInfoList(
         reportId: String, token: String
     ): List<NetworkSubjectDiagnosisInfo> {
-        return zhixueApi.getSubjectDiagnosis(reportId, token).result!!.subjectDiagnosisInfoList
+        return zhixueApi.getSubjectDiagnosis(reportId, token).result.subjectDiagnosisInfoList
     }
 
     override suspend fun getPaperInfoList(
         reportId: String, token: String
     ): List<NetworkPaperInfo> {
-        return zhixueApi.getReportMain(reportId, token).result!!.paperInfoList
+        return zhixueApi.getReportMain(reportId, token).result.paperInfoList
     }
 
     override suspend fun getTrendInfoList(
         reportId: String, paperId: String, token: String
     ): List<NetworkTrendInfo> {
-        return zhixueApi.getLevelTrend(reportId, paperId, token).result!!.trendInfoList
+        return zhixueApi.getLevelTrend(reportId, paperId, token).result.trendInfoList
     }
 
     override suspend fun getCheckSheet(
         reportId: String, paperId: String, token: String
     ): NetworkCheckSheet {
-        return zhixueApi.getCheckSheet(reportId, paperId, token).result!!
+        return zhixueApi.getCheckSheet(reportId, paperId, token).result
     }
 
     private inline fun <reified T> createNetworkApi(baseUrl: String): T {
