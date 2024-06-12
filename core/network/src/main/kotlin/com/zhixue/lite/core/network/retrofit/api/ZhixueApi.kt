@@ -1,7 +1,7 @@
 package com.zhixue.lite.core.network.retrofit.api
 
 import com.zhixue.lite.core.network.model.NetworkCasInfo
-import com.zhixue.lite.core.network.model.NetworkCheckSheet
+import com.zhixue.lite.core.network.model.NetworkSheetInfo
 import com.zhixue.lite.core.network.model.NetworkLevelTrend
 import com.zhixue.lite.core.network.model.NetworkReportInfoPage
 import com.zhixue.lite.core.network.model.NetworkReportMain
@@ -89,5 +89,5 @@ internal interface ZhixueApi {
         paperId: String,
         @Field("token")
         token: String
-    ): ZhixueNetworkResponse<NetworkCheckSheet>
+    ): ZhixueNetworkResponse<NetworkSheetInfo>
 }

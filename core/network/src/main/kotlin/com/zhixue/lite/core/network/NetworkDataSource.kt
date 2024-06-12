@@ -1,7 +1,7 @@
 package com.zhixue.lite.core.network
 
 import com.zhixue.lite.core.network.model.NetworkCasInfo
-import com.zhixue.lite.core.network.model.NetworkCheckSheet
+import com.zhixue.lite.core.network.model.NetworkSheetInfo
 import com.zhixue.lite.core.network.model.NetworkPaperInfo
 import com.zhixue.lite.core.network.model.NetworkReportInfoPage
 import com.zhixue.lite.core.network.model.NetworkSsoInfo
@@ -33,7 +33,7 @@ interface NetworkDataSource {
         reportId: String, paperId: String, token: String
     ): List<NetworkTrendInfo>
 
-    suspend fun getCheckSheet(
+    suspend fun getSheetInfo(
         reportId: String, paperId: String, token: String
-    ): NetworkCheckSheet
+    ): NetworkSheetInfo
 }
