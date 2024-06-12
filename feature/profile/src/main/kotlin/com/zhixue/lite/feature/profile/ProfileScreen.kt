@@ -144,7 +144,8 @@ internal fun SettingPanel(
             title = stringResource(R.string.profile_modify_password),
             onClick = { /*TODO*/ }
         )
-        Divider(modifier = Modifier.padding(top = 8.dp, bottom = 16.dp))
+        Divider(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = stringResource(R.string.profile_general_label),
             color = Theme.colorScheme.onBackgroundVariant,
@@ -163,7 +164,7 @@ internal fun SettingPanel(
             title = stringResource(R.string.profile_clear_cache),
             onClick = { /*TODO*/ }
         )
-        Divider(modifier = Modifier.padding(vertical = 8.dp))
+        Divider(modifier = Modifier.padding(8.dp))
         SettingItem(
             title = stringResource(R.string.profile_logout),
             onClick = onLogoutClick,

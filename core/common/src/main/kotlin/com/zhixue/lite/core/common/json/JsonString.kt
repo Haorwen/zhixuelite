@@ -8,7 +8,7 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonDecoder
 
 @Serializable(JsonStringSerializer::class)
-data class JsonString<T>(val json: T)
+data class JsonString<T>(val value: T)
 
 private class JsonStringSerializer<T>(
     private val serializer: KSerializer<T>
