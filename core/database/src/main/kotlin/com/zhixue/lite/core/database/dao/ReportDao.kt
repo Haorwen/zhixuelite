@@ -17,8 +17,7 @@ interface ReportDao {
         """
             SELECT 
                 SUM(user_score) AS user_score,
-                SUM(standard_score) AS standard_score,
-                ROUND(user_score / standard_score, 2) AS score_rate
+                SUM(standard_score) AS standard_score
             FROM paper_info
             WHERE 
                 user_id = :userId

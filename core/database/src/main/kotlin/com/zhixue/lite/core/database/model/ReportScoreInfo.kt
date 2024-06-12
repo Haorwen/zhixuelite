@@ -7,13 +7,11 @@ data class ReportScoreInfo(
     @ColumnInfo("user_score")
     val userScore: Double,
     @ColumnInfo("standard_score")
-    val standardScore: Double,
-    @ColumnInfo("score_rate")
-    val scoreRate: Float
+    val standardScore: Double
 )
 
 fun ReportScoreInfo.asExternalModel(): ScoreInfo = ScoreInfo(
     userScore = userScore,
     standardScore = standardScore,
-    scoreRate = scoreRate
+    scoreRate = (userScore / standardScore).toFloat()
 )
