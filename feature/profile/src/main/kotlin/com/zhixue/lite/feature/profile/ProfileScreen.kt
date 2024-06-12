@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -88,7 +89,7 @@ internal fun ProfileContent(
         ) {
             Spacer(modifier = Modifier.height(8.dp))
             ProfilePanel(userInfo = uiState.userInfo)
-            Divider()
+            Divider(modifier = Modifier.padding(horizontal = 8.dp))
             SettingPanel(onLogoutClick = onLogoutClick)
         }
     }
@@ -106,7 +107,7 @@ internal fun ProfilePanel(userInfo: UserInfo) {
             imageUrl = userInfo.avatar,
             modifier = Modifier
                 .size(48.dp)
-                .clip(CircleShape)
+                .shadow(elevation = 1.dp, shape = CircleShape)
         )
         Spacer(modifier = Modifier.width(24.dp))
         Column {
