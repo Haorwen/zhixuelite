@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.zhixue.lite.feature.login.navigation.loginScreen
 import com.zhixue.lite.feature.main.navigation.mainScreen
+import com.zhixue.lite.feature.paper.navigation.paperScreen
 import com.zhixue.lite.feature.report.navigation.reportScreen
 import com.zhixue.lite.ui.ZhixueLiteAppState
 
@@ -32,11 +33,14 @@ fun ZhixueLiteNavHost(
         )
         mainScreen(
             onLogoutClick = appState::navigateToLogin,
-            onReportInfoClick = appState::navigateToReportDetail
+            onReportInfoClick = appState::navigateToReport
         )
         reportScreen(
             onBackClick = appState::popBackStack,
-            onPaperInfoClick = {}
+            onPaperInfoClick = appState::navigateToPaper
+        )
+        paperScreen(
+            onBackClick = appState::popBackStack
         )
     }
 }

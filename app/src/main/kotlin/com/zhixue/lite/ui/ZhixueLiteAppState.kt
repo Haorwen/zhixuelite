@@ -11,6 +11,7 @@ import com.zhixue.lite.feature.login.navigation.LoginRoute
 import com.zhixue.lite.feature.login.navigation.navigateToLogin
 import com.zhixue.lite.feature.main.navigation.MainRoute
 import com.zhixue.lite.feature.main.navigation.navigateToMain
+import com.zhixue.lite.feature.paper.navigation.navigateToPaper
 import com.zhixue.lite.feature.report.navigation.navigateToReport
 
 @Composable
@@ -55,11 +56,18 @@ class ZhixueLiteAppState(
         navController.navigateToLogin(navOptions)
     }
 
-    fun navigateToReportDetail(reportId: String) {
+    fun navigateToReport(reportId: String) {
         val navOptions = navOptions {
             launchSingleTop = true
         }
         navController.navigateToReport(reportId, navOptions)
+    }
+
+    fun navigateToPaper(paperId: String) {
+        val navOptions = navOptions {
+            launchSingleTop = true
+        }
+        navController.navigateToPaper(paperId, navOptions)
     }
 
     fun popBackStack() {

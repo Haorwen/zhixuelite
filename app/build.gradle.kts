@@ -29,6 +29,7 @@ dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.feature.login)
     implementation(projects.feature.main)
+    implementation(projects.feature.paper)
     implementation(projects.feature.report)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.splashscreen)
