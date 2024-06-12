@@ -62,7 +62,7 @@ internal class RetrofitNetwork @Inject constructor(
     override suspend fun getSubjectDiagnosisInfoList(
         reportId: String, token: String
     ): List<NetworkSubjectDiagnosisInfo> {
-        return zhixueApi.getSubjectDiagnosis(reportId, token).result.subjectDiagnosisInfoList
+        return zhixueApi.getSubjectDiagnosis(reportId, token).result.list
     }
 
     override suspend fun getPaperInfoList(
@@ -74,7 +74,7 @@ internal class RetrofitNetwork @Inject constructor(
     override suspend fun getTrendInfoList(
         reportId: String, paperId: String, token: String
     ): List<NetworkTrendInfo> {
-        return zhixueApi.getLevelTrend(reportId, paperId, token).result.trendInfoList
+        return zhixueApi.getLevelTrend(reportId, paperId, token).result.list
     }
 
     override suspend fun getSheetInfo(

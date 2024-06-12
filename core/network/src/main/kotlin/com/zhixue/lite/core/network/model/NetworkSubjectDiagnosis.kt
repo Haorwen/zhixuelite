@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class NetworkSubjectDiagnosis(
     @SerialName("list")
-    val subjectDiagnosisInfoList: List<NetworkSubjectDiagnosisInfo>
+    val list: List<NetworkSubjectDiagnosisInfo>
 )
 
 @Serializable

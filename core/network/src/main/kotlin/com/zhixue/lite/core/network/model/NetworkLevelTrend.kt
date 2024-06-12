@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class NetworkLevelTrend(
     @SerialName("list")
-    val trendInfoList: List<NetworkTrendInfo>
+    val list: List<NetworkTrendInfo>
 )
 
 @Serializable
