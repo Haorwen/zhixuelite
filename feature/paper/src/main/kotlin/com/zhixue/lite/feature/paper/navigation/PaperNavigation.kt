@@ -8,10 +8,14 @@ import com.zhixue.lite.feature.paper.PaperRoute
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PaperRoute(val paperId: String)
+data class PaperRoute(val reportId: String, val paperId: String)
 
-fun NavController.navigateToPaper(paperId: String, navOptions: NavOptions? = null) {
-    navigate(PaperRoute(paperId), navOptions)
+fun NavController.navigateToPaper(
+    reportId: String,
+    paperId: String,
+    navOptions: NavOptions? = null
+) {
+    navigate(PaperRoute(reportId, paperId), navOptions)
 }
 
 fun NavGraphBuilder.paperScreen(

@@ -63,11 +63,11 @@ class ZhixueLiteAppState(
         navController.navigateToReport(reportId, navOptions)
     }
 
-    fun navigateToPaper(paperId: String) {
+    fun navigateToPaper(reportId: String, paperId: String) {
         val navOptions = navOptions {
             launchSingleTop = true
         }
-        navController.navigateToPaper(paperId, navOptions)
+        navController.navigateToPaper(reportId, paperId, navOptions)
     }
 
     fun popBackStack() {
