@@ -68,7 +68,7 @@ internal class RetrofitNetwork @Inject constructor(
     override suspend fun getPaperInfoList(
         reportId: String, token: String
     ): List<NetworkPaperInfo> {
-        return zhixueApi.getReportMain(reportId, token).result.paperInfoList
+        return zhixueApi.getReportMain(reportId, token).result.list
     }
 
     override suspend fun getTrendInfoList(

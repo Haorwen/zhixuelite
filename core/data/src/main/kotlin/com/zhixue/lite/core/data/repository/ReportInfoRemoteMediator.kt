@@ -29,7 +29,7 @@ internal class ReportInfoRemoteMediator(
                 reportDao.getReportInfoLatestId(userRepository.userId, reportType)
             val networkLatestId = networkDataSource.getReportInfoPage(
                 reportType, STARTING_PAGE, userRepository.token
-            ).reportInfoList.first().id
+            ).list.first().id
 
             check(localLatestId != networkLatestId)
 
@@ -73,7 +73,7 @@ internal class ReportInfoRemoteMediator(
                 RemotePageEntity(userRepository.userId, label, nextPage = loadPage + 1)
             )
             reportDao.insertReportInfoList(
-                networkReportInfoPage.reportInfoList.map {
+                networkReportInfoPage.list.map {
                     it.asEntity(userRepository.userId, reportType)
                 }
             )
