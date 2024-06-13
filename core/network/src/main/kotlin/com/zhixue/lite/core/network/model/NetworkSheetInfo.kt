@@ -29,17 +29,17 @@ data class NetworkSheetInfo(
         ) {
             @Serializable
             data class Page(
+                @SerialName("widthAfterCorrect")
+                val width: Double? = null,
+                @SerialName("heightAfterCorrect")
+                val height: Double? = null,
                 @SerialName("sections")
                 val sections: List<Section>
             ) {
                 @Serializable
                 data class Section(
                     @SerialName("contents")
-                    val contents: Contents,
-                    @SerialName("widthAfterCorrect")
-                    val correctWidth: Double? = null,
-                    @SerialName("heightAfterCorrect")
-                    val correctHeight: Double? = null
+                    val contents: Contents
                 ) {
                     @Serializable
                     data class Contents(
