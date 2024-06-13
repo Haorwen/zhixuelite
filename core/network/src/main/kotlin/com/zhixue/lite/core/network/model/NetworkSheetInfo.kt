@@ -35,7 +35,11 @@ data class NetworkSheetInfo(
                 @Serializable
                 data class Section(
                     @SerialName("contents")
-                    val contents: Contents
+                    val contents: Contents,
+                    @SerialName("widthAfterCorrect")
+                    val correctWidth: Double? = null,
+                    @SerialName("heightAfterCorrect")
+                    val correctHeight: Double? = null
                 ) {
                     @Serializable
                     data class Contents(
@@ -52,10 +56,10 @@ data class NetworkSheetInfo(
 
                         @Serializable
                         data class Position(
-                            @SerialName("top")
-                            val top: Int,
                             @SerialName("left")
-                            val left: Int,
+                            val x: Int,
+                            @SerialName("top")
+                            val y: Int,
                             @SerialName("width")
                             val width: Int
                         )
