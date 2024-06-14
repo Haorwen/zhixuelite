@@ -21,10 +21,8 @@ internal class UserRepositoryImpl @Inject constructor(
 ) : UserRepository {
 
     override var userId: String = ""
-        private set
 
     override var token: String = ""
-        private set
 
     private val currentUserData: Flow<UserData> = preferencesDataSource.userPreferences
         .map(UserPreferences::asExternalModel)
