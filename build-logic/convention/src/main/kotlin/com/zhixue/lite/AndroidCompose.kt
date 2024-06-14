@@ -2,7 +2,9 @@ package com.zhixue.lite
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension
 
 internal fun Project.configureAndroidCompose(
     commonExtension: CommonExtension<*, *, *, *, *, *>
@@ -12,13 +14,13 @@ internal fun Project.configureAndroidCompose(
             compose = true
         }
 
-        composeOptions {
-            kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
-        }
-
         dependencies {
             add("implementation", libs.androidx.compose.foundation)
             add("implementation", libs.androidx.compose.ui.tooling.preview)
+        }
+
+        extensions.configure<ComposeCompilerGradlePluginExtension> {
+            enableStrongSkippingMode.set(true)
         }
     }
 }

@@ -1,21 +1,20 @@
 [versions]
 accompanist = "0.35.1-alpha"
-android = "8.4.2"
+android = "8.5.0"
 androidx-activity-compose = "1.9.0"
-androidx-compose = "1.7.0-beta02"
-androidx-compose-compiler = "1.5.14"
+androidx-compose = "1.7.0-beta03"
 androidx-core-splashscreen = "1.0.1"
 androidx-datastore = "1.1.1"
 androidx-hilt-navigation-compose = "1.2.0"
-androidx-navigation-compose = "2.8.0-beta02"
+androidx-navigation-compose = "2.8.0-beta03"
 androidx-paging = "3.3.0"
 androidx-room = "2.6.1"
 captcha = "1.5.1"
 coil = "2.6.0"
 hilt = "2.51.1"
-kotlin = "1.9.24"
-kotlinx-serialization-json = "1.6.3"
-ksp = "1.9.24-1.0.20"
+kotlin = "2.0.0"
+kotlinx-serialization-json = "1.7.0"
+ksp = "2.0.0-1.0.22"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
 
@@ -45,6 +44,7 @@ retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.r
 retrofit-converter-kotlinx-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
 # build-logic
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android" }
+compose-compiler-gradle-plugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
 ksp-gradle-plugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradle-plugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "androidx-room" }
 
@@ -52,6 +52,7 @@ room-gradle-plugin = { group = "androidx.room", name = "room-gradle-plugin", ver
 android-application = { id = "com.android.application", version.ref = "android" }
 android-library = { id = "com.android.library", version.ref = "android" }
 androidx-room = { id = "androidx.room", version.ref = "androidx-room" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
