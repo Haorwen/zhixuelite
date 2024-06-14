@@ -76,7 +76,7 @@ data class NetworkSheetInfo(
             @Serializable
             data class Detail(
                 @SerialName("score")
-                val score: Double,
+                val score: Double? = null,
                 @SerialName("standardScore")
                 val standardScore: Double
             )
