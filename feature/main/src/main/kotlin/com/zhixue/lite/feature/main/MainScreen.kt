@@ -1,7 +1,8 @@
 package com.zhixue.lite.feature.main
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,8 +47,8 @@ internal fun MainScreen(
             navController = mainState.navController,
             startDestination = HomeRoute,
             modifier = Modifier.weight(1f),
-            enterTransition = { EnterTransition.None },
-            exitTransition = { ExitTransition.None }
+            enterTransition = { fadeIn(tween(0)) },
+            exitTransition = { fadeOut(tween(0)) }
         ) {
             homeScreen(onReportInfoClick = onReportInfoClick)
             profileScreen(onLogoutClick = onLogoutClick)

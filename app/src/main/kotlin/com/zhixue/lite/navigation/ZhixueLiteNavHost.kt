@@ -4,7 +4,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
@@ -23,8 +22,15 @@ fun ZhixueLiteNavHost(
         navController = appState.navController,
         startDestination = appState.currentStartDestination,
         modifier = modifier,
-        enterTransition = { slideInHorizontally() + fadeIn(animationSpec = tween(100)) },
-        exitTransition = { slideOutHorizontally() + fadeOut(animationSpec = tween(100)) }
+        enterTransition = {
+            slideInHorizontally(tween(375)) { it / 2 } + fadeIn(tween(0))
+        },
+        popEnterTransition = {
+            slideInHorizontally(tween(375)) { -it / 2 } + fadeIn(tween(0))
+        },
+        exitTransition = {
+            fadeOut(tween(0))
+        },
     ) {
         loginScreen(
             onLoginSuccess = appState::navigateToMain,
