@@ -4,6 +4,7 @@ import com.zhixue.lite.core.database.ZhixueLiteDatabase
 import com.zhixue.lite.core.database.dao.PaperInfoDao
 import com.zhixue.lite.core.database.dao.RemotePageDao
 import com.zhixue.lite.core.database.dao.ReportDao
+import com.zhixue.lite.core.database.dao.SheetInfoDao
 import com.zhixue.lite.core.database.dao.TrendInfoDao
 import com.zhixue.lite.core.database.dao.UserInfoDao
 import dagger.Module
@@ -38,4 +39,9 @@ internal object DaoModule {
     fun providesTrendInfoDao(
         database: ZhixueLiteDatabase
     ): TrendInfoDao = database.trendInfoDao()
+
+    @Provides
+    fun providesSheetInfoDao(
+        database: ZhixueLiteDatabase
+    ): SheetInfoDao = database.sheetInfoDao()
 }

@@ -6,6 +6,7 @@ import androidx.room.TypeConverters
 import com.zhixue.lite.core.database.dao.PaperInfoDao
 import com.zhixue.lite.core.database.dao.RemotePageDao
 import com.zhixue.lite.core.database.dao.ReportDao
+import com.zhixue.lite.core.database.dao.SheetInfoDao
 import com.zhixue.lite.core.database.dao.TrendInfoDao
 import com.zhixue.lite.core.database.dao.UserInfoDao
 import com.zhixue.lite.core.database.model.PaperInfoEntity
@@ -34,4 +35,5 @@ internal abstract class ZhixueLiteDatabase : RoomDatabase() {
     abstract fun reportDao(): ReportDao
     abstract fun paperInfoDao(): PaperInfoDao
     abstract fun trendInfoDao(): TrendInfoDao
+    abstract fun sheetInfoDao(): SheetInfoDao
 }
