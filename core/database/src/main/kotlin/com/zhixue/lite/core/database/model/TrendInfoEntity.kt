@@ -3,7 +3,6 @@ package com.zhixue.lite.core.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import com.zhixue.lite.core.model.TrendDirection
-import com.zhixue.lite.core.model.TrendInfo
 
 @Entity(
     tableName = "trend_info",
@@ -29,10 +28,3 @@ data class TrendInfoEntity(
     @ColumnInfo(name = "student_number")
     val studentNumber: Int
 )
-
-fun TrendInfoEntity.asExternalModel(): TrendInfo =
-    TrendInfo(
-        level = level,
-        direction = direction,
-        studentNumber = studentNumber
-    )

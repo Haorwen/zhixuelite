@@ -25,7 +25,11 @@ interface PaperInfoDao {
     @Query(
         """
             SELECT * FROM paper_info
-            WHERE user_id = :userId AND report_id = :reportId
+            LEFT JOIN trend_info
+                ON trend_info.user_id = :userId 
+                AND trend_info.paper_id = paper_info.id
+                AND trend_info.code = 'clazz'
+            WHERE paper_info.user_id = :userId AND paper_info.report_id = :reportId
             ORDER BY subject_code
         """
     )

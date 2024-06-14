@@ -1,17 +1,19 @@
 package com.zhixue.lite.core.database.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
-import androidx.room.Relation
 import com.zhixue.lite.core.model.PaperInfo
+import com.zhixue.lite.core.model.TrendDirection
 
 data class PopulatedPaperInfo(
     @Embedded
     val paperInfoEntity: PaperInfoEntity,
-    @Relation(
-        parentColumn = "id",
-        entityColumn = "paper_id"
-    )
-    val trendInfoEntities: List<TrendInfoEntity>
+    @ColumnInfo(name = "level")
+    val level: String?,
+    @ColumnInfo(name = "direction")
+    val direction: TrendDirection?,
+    @ColumnInfo(name = "student_number")
+    val studentNumber: Int?
 )
 
 fun PopulatedPaperInfo.asExternalModel(): PaperInfo =
@@ -23,5 +25,7 @@ fun PopulatedPaperInfo.asExternalModel(): PaperInfo =
         scoreRate = paperInfoEntity.scoreRate,
         classRank = paperInfoEntity.classRank,
         classPercentile = paperInfoEntity.classPercentile,
-        classTrendInfo = trendInfoEntities.find { it.code == "clazz" }?.asExternalModel()
+        level = level,
+        direction = direction,
+        studentNumber = studentNumber
     )

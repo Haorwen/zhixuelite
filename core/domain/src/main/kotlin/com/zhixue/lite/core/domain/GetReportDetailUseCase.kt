@@ -17,7 +17,7 @@ class GetReportDetailUseCase @Inject constructor(
             overviews = paperRepository.getPaperInfoList(reportId)
                 .map { paperInfo ->
                     val classRank = paperInfo.classRank ?: calculateRank(
-                        studentNumber = paperInfo.classTrendInfo?.studentNumber,
+                        studentNumber = paperInfo.studentNumber,
                         classPercentile = paperInfo.classPercentile
                     )
                     FormatPaperInfo(
@@ -26,9 +26,9 @@ class GetReportDetailUseCase @Inject constructor(
                         userScore = paperInfo.userScore?.toPlainString() ?: "-",
                         standardScore = paperInfo.standardScore.toPlainString(),
                         scoreRate = paperInfo.scoreRate,
-                        level = paperInfo.classTrendInfo?.level.orEmpty(),
+                        level = paperInfo.level.orEmpty(),
                         classRank = classRank?.toString() ?: "-",
-                        direction = paperInfo.classTrendInfo?.direction
+                        direction = paperInfo.direction
                     )
                 }
                 .also { check(it.isNotEmpty()) }

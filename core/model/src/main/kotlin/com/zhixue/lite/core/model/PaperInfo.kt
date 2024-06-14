@@ -8,7 +8,9 @@ data class PaperInfo(
     val scoreRate: Float,
     val classRank: Int?,
     val classPercentile: Double?,
-    val classTrendInfo: TrendInfo?
+    val level: String?,
+    val direction: TrendDirection?,
+    val studentNumber: Int?
 )
 
 data class FormatPaperInfo(
