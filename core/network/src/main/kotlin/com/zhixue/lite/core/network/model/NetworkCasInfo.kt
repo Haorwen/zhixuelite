@@ -10,7 +10,7 @@ data class NetworkCasInfo(
     @SerialName("token")
     val token: String,
     @SerialName("childrens")
-    val children: List<ChildInfo>? = null,
+    val children: List<ChildInfo> = emptyList(),
     @SerialName("userInfo")
     val userInfo: UserInfo,
     @SerialName("clazzInfo")
@@ -29,7 +29,7 @@ data class NetworkCasInfo(
     @Serializable
     data class UserInfo(
         @SerialName("avatar")
-        val avatar: String? = null,
+        val avatar: String = "",
         @SerialName("name")
         val name: String,
         @SerialName("school")

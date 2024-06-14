@@ -75,7 +75,7 @@ internal class UserRepositoryImpl @Inject constructor(
             }
 
             "parent" -> {
-                casInfo.children!!
+                casInfo.children
                     .single { it.id == currentUserId }
                     .let { it.userInfo to it.classInfo }
             }
@@ -91,7 +91,7 @@ internal class UserRepositoryImpl @Inject constructor(
         setUserInfo(
             id = currentUserId,
             name = userInfo.name,
-            avatar = userInfo.avatar.orEmpty(),
+            avatar = userInfo.avatar,
             className = classInfo.name,
             schoolName = userInfo.schoolInfo?.name.orEmpty(),
             grantTicket = ssoInfo.grantTicket
