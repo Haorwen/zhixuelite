@@ -4,6 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.RewriteQueriesToDropUnusedColumns
+import androidx.room.RoomWarnings
 import androidx.room.Transaction
 import com.zhixue.lite.core.database.model.PaperInfoEntity
 import com.zhixue.lite.core.database.model.PopulatedPaperInfo
@@ -21,6 +23,8 @@ interface PaperInfoDao {
     )
     suspend fun getPaperInfoIds(userId: String, reportId: String): List<String>
 
+    @RewriteQueriesToDropUnusedColumns
+    @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
     @Transaction
     @Query(
         """

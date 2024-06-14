@@ -11,4 +11,6 @@ interface PaperRepository {
     suspend fun syncPaperInfoList(reportId: String)
 
     suspend fun syncTrendInfoList(reportId: String, paperId: String)
+
+    suspend fun syncSheetInfo(reportId: String, paperId: String)
 }
