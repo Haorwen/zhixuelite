@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.zhixue.lite"
         versionCode = 1
-        versionName = "1.0.0"
+        versionName = "1.0.0-alpha01"
         resourceConfigurations += "zh-rCN"
     }
 
