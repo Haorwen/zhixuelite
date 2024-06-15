@@ -81,5 +81,7 @@ data class NetworkAnswerRecordInfo(
     @SerialName("score")
     val score: Double = 0.0,
     @SerialName("standardScore")
-    val standardScore: Double
+    val standardScore: Double,
+    @SerialName("isSelected")
+    val isSelected: Boolean = true
 )

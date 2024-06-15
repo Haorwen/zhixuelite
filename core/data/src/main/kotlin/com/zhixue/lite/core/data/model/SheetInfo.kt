@@ -10,9 +10,11 @@ fun NetworkSheetInfo.asEntity(userId: String, paperId: String): SheetInfoEntity 
         userId = userId,
         paperId = paperId,
         userScore = data.value.answerRecord.list
+            .filter { it.isSelected }
             .sumOf { it.score.toBigDecimal() }
             .toDouble(),
         standardScore = data.value.answerRecord.list
+            .filter { it.isSelected }
             .sumOf { it.standardScore.toBigDecimal() }
             .toDouble(),
         pages = images.value.mapIndexed { index, image ->
