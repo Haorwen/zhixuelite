@@ -9,6 +9,12 @@ fun NetworkSheetInfo.asEntity(userId: String, paperId: String): SheetInfoEntity 
     SheetInfoEntity(
         userId = userId,
         paperId = paperId,
+        userScore = data.value.answerRecord.list
+            .sumOf { it.score.toBigDecimal() }
+            .toDouble(),
+        standardScore = data.value.answerRecord.list
+            .sumOf { it.standardScore.toBigDecimal() }
+            .toDouble(),
         pages = images.value.mapIndexed { index, image ->
             val location = data.value.location
             val page = location?.pages?.getOrNull(index)

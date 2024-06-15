@@ -8,6 +8,7 @@ import com.zhixue.lite.core.database.dao.TrendInfoDao
 import com.zhixue.lite.core.database.model.PopulatedPaperInfo
 import com.zhixue.lite.core.database.model.asExternalModel
 import com.zhixue.lite.core.model.PaperInfo
+import com.zhixue.lite.core.model.SheetInfo
 import com.zhixue.lite.core.network.NetworkDataSource
 import javax.inject.Inject
 
@@ -26,6 +27,10 @@ internal class PaperRepositoryImpl @Inject constructor(
     override suspend fun getPaperInfoList(reportId: String): List<PaperInfo> {
         return paperInfoDao.getPaperInfoList(userRepository.userId, reportId)
             .map(PopulatedPaperInfo::asExternalModel)
+    }
+
+    override suspend fun getSheetInfo(paperId: String): SheetInfo {
+        return sheetInfoDao.getSheetInfo(userRepository.userId, paperId).asExternalModel()
     }
 
     override suspend fun syncPaperInfoList(reportId: String) {

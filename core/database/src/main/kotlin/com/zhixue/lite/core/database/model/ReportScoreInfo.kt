@@ -12,6 +12,5 @@ data class ReportScoreInfo(
 
 fun ReportScoreInfo.asExternalModel(): ScoreInfo = ScoreInfo(
     userScore = userScore,
-    standardScore = standardScore,
-    scoreRate = (userScore / standardScore).toFloat()
+    standardScore = standardScore
 )

@@ -15,6 +15,7 @@ class GetReportDetailUseCase @Inject constructor(
         return ReportDetail(
             scoreInfo = reportRepository.getReportScoreInfo(reportId),
             overviews = paperRepository.getPaperInfoList(reportId)
+                .also { check(it.isNotEmpty()) }
                 .map { paperInfo ->
                     val classRank = paperInfo.classRank ?: calculateRank(
                         studentNumber = paperInfo.studentNumber,
@@ -31,7 +32,6 @@ class GetReportDetailUseCase @Inject constructor(
                         direction = paperInfo.direction
                     )
                 }
-                .also { check(it.isNotEmpty()) }
         )
     }
 }

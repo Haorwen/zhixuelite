@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paper_title">学科详情</string>
+    <string name="paper_error_message">似乎遇到了一些问题…</string>
+    <string name="paper_score_label">得分</string>
+</resources>

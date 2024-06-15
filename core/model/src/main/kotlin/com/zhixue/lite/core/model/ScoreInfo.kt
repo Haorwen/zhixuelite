@@ -5,9 +5,9 @@ data class ScoreInfo internal constructor(
     val standardScore: String,
     val scoreRate: Float
 ) {
-    constructor(userScore: Double, standardScore: Double, scoreRate: Float) : this(
+    constructor(userScore: Double, standardScore: Double) : this(
         userScore = userScore.toBigDecimal().stripTrailingZeros().toPlainString(),
         standardScore = standardScore.toBigDecimal().stripTrailingZeros().toPlainString(),
-        scoreRate = scoreRate
+        scoreRate = (userScore / standardScore).toFloat()
     )
 }
