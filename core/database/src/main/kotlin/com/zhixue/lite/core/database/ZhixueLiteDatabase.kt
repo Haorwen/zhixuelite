@@ -18,7 +18,7 @@ import com.zhixue.lite.core.database.model.UserInfoEntity
 import com.zhixue.lite.core.database.util.SheetPageListConverter
 
 @Database(
-    version = 1,
+    version = 2,
     entities = [
         UserInfoEntity::class,
         RemotePageEntity::class,
