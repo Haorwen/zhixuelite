@@ -30,7 +30,7 @@ internal class SheetImageTransformation(
                     // 绘制Section分数文本
                     val textPaint = Paint().apply {
                         color = Color.RED
-                        textSize = input.width.toFloat() / 50
+                        textSize = input.width.toFloat() / 60
                         isFakeBoldText = true
                     }
                     val textRect = Rect()
