@@ -23,12 +23,12 @@ interface PaperInfoDao {
     )
     suspend fun getPaperInfoIds(userId: String, reportId: String): List<String>
 
-    @RewriteQueriesToDropUnusedColumns
-    @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
     @Transaction
     @Query(
         """
-            SELECT * FROM paper_info
+            SELECT 
+                paper_info.*, trend_info.level, trend_info.direction, trend_info.student_number 
+            FROM paper_info
             LEFT JOIN trend_info
                 ON trend_info.user_id = :userId 
                 AND trend_info.paper_id = paper_info.id
