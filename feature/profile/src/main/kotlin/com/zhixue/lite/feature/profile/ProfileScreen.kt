@@ -104,7 +104,7 @@ internal fun ProfilePanel(userInfo: UserInfo) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(
-            imageUrl = userInfo.avatar,
+            model = userInfo.avatar,
             modifier = Modifier
                 .size(48.dp)
                 .shadow(elevation = 1.dp, shape = CircleShape)

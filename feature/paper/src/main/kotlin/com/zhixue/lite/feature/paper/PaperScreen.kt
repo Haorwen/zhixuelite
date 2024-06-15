@@ -5,23 +5,35 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.request.ImageRequest
+import com.zhixue.lite.core.designsystem.component.AsyncImage
+import com.zhixue.lite.core.designsystem.component.Divider
 import com.zhixue.lite.core.designsystem.component.Icon
 import com.zhixue.lite.core.designsystem.component.IconButton
 import com.zhixue.lite.core.designsystem.component.Text
+import com.zhixue.lite.core.designsystem.modifier.themePlaceholder
 import com.zhixue.lite.core.designsystem.theme.Theme
 import com.zhixue.lite.core.model.PaperDetail
+import com.zhixue.lite.core.model.SheetPage
 import com.zhixue.lite.core.ui.ScorePanel
+import com.zhixue.lite.feature.paper.util.SheetImageTransformation
 
 @Composable
 internal fun PaperRoute(
@@ -97,6 +109,8 @@ internal fun PaperPlaceholderBody() {
             .border(1.dp, Theme.colorScheme.outline, Theme.shapes.medium)
     ) {
         ScorePanel(enabledPlaceholder = true)
+        Divider()
+        SheetPanel(enabledPlaceholder = true)
     }
 }
 
@@ -125,5 +139,63 @@ internal fun PaperDetailBody(
             label = stringResource(R.string.paper_score_label),
             scoreInfo = paperDetail.scoreInfo
         )
+        Divider()
+        SheetPanel(
+            sheetPages = paperDetail.sheetPages
+        )
     }
+}
+
+@Composable
+fun SheetPanel(
+    sheetPages: List<SheetPage> = emptyList(),
+    enabledPlaceholder: Boolean = false
+) {
+    Column(modifier = Modifier.padding(vertical = 16.dp, horizontal = 24.dp)) {
+        Text(
+            text = stringResource(R.string.paper_sheet_label),
+            color = Theme.colorScheme.onBackgroundVariant,
+            style = Theme.typography.titleMedium.copy(fontWeight = FontWeight.Medium),
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+                .width(if (enabledPlaceholder) 48.dp else Dp.Unspecified)
+                .themePlaceholder(enabledPlaceholder)
+        )
+        Column(modifier = Modifier.clip(Theme.shapes.small)) {
+            if (sheetPages.isEmpty()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(192.dp)
+                        .themePlaceholder(enabledPlaceholder)
+                )
+            } else {
+                sheetPages.forEach { sheetPage ->
+                    SheetPage(sheetPage = sheetPage)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+internal fun SheetPage(
+    sheetPage: SheetPage,
+    modifier: Modifier = Modifier
+) {
+    AsyncImage(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(sheetPage.image)
+            .transformations(
+                SheetImageTransformation(
+                    width = sheetPage.width,
+                    height = sheetPage.height,
+                    sections = sheetPage.sections
+                )
+            )
+            .diskCacheKey(sheetPage.image.substringBefore("?"))
+            .memoryCacheKey(sheetPage.image.substringBefore("?"))
+            .build(),
+        modifier = modifier
+    )
 }
