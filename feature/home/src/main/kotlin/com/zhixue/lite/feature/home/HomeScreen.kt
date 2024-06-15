@@ -33,6 +33,9 @@ import com.zhixue.lite.core.designsystem.component.TextButton
 import com.zhixue.lite.core.designsystem.theme.Theme
 import com.zhixue.lite.core.model.FormatReportInfo
 import com.zhixue.lite.core.ui.ReportInfoItem
+import dev.materii.pullrefresh.PullRefreshIndicator
+import dev.materii.pullrefresh.PullRefreshLayout
+import dev.materii.pullrefresh.rememberPullRefreshState
 
 @Composable
 internal fun HomeRoute(
@@ -116,14 +119,30 @@ internal fun HomeReportInfoPage(
         targetState = reportInfoList.loadState.refresh is LoadState.Loading,
         animationSpec = tween(800)
     ) { isLoading ->
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            userScrollEnabled = !isLoading
+        val pullRefreshState = rememberPullRefreshState(
+            refreshing = isLoading,
+            onRefresh = { reportInfoList.refresh() }
+        )
+
+        PullRefreshLayout(
+            state = pullRefreshState,
+            indicator = {
+                PullRefreshIndicator(
+                    state = pullRefreshState,
+                    contentColor = Theme.colorScheme.primary,
+                    backgroundColor = Theme.colorScheme.background
+                )
+            }
         ) {
-            if (isLoading) {
-                placeholderBody()
-            } else {
-                reportInfoBody(reportInfoList, onReportInfoClick)
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                userScrollEnabled = !isLoading
+            ) {
+                if (isLoading) {
+                    placeholderBody()
+                } else {
+                    reportInfoBody(reportInfoList, onReportInfoClick)
+                }
             }
         }
     }
