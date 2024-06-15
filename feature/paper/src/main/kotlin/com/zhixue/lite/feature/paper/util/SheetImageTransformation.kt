@@ -30,12 +30,12 @@ internal class SheetImageTransformation(
                     // 绘制Section分数文本
                     val textPaint = Paint().apply {
                         color = Color.RED
-                        textSize = 8f * widthScale
+                        textSize = input.width.toFloat() / 50
                         isFakeBoldText = true
                     }
                     val textRect = Rect()
                     sections.forEach { section ->
-                        val scoreText = "${section.score}/${section.standardScore}"
+                        val scoreText = "${section.score} / ${section.standardScore}"
                         // 获取文字所在矩形区域
                         textPaint.getTextBounds(scoreText, 0, scoreText.length, textRect)
                         // 绘制文字
